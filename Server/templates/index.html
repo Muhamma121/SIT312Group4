@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Smart lock</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+<body>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+	<center>
+<h1>
+	Smart Lock
+</h1>
+<br />
+<br />
+<br />
+<button type="button" id="unlock-button" class="btn btn-success btn-lg"> Unlock </button>
+
+
+<br />
+<br />
+<br />
+
+<button type="button" id="lock-button" class="btn btn-danger btn-lg">  Lock  </button>
+
+</center>
+</body>
+<script type="text/javascript">
+const lockButton = document.getElementById('lock-button');
+const unlockButton = document.getElementById('unlock-button');
+
+lockButton.addEventListener('click', e => {
+	fetch('http://192.168.43.217/magPin/on', {method: 'POST'})
+	.then(res => {
+		console.log(res);
+		})
+	.catch(err => {
+		console.log(err);
+		});
+	});
+
+unlockButton.addEventListener('click', e => {
+	fetch('http://192.168.43.217/magPin/off', {method: 'POST'})
+	.then(res => {
+		console.log(res);
+		})
+	.catch(err => {
+		console.log(err);
+		});
+	});
+
+
+</script>
+
+
+
+</html>
